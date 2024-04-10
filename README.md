@@ -45,43 +45,49 @@ Trivia Backend is a Node.js application built with Express and MongoDB (using Mo
 
 The backend exposes the following API endpoints:
 
-## User Authentication and Management:
+### User Authentication and Management
 - `/api/auth/register (POST)`: Register a new user with username, email, and password. Returns a JWT token for authentication.
 - `/api/auth/login (POST)`: Log in an existing user with email and password. Returns a JWT token for authentication.
 - `/api/auth/logout (POST)`: Log out the current user and invalidate the JWT token.
 - `/api/auth/user (GET)`: Get current user details including username, email, points, membership status, etc.
 - `/api/auth/forgot-password (POST)`: Send reset password instructions to the user's email.
 
-## Game Management:
+### Game Management
 - `/api/games (GET)`: Get a list of available games including free and premium games, with details like name, category, description, and point rewards.
-- `/api/games/start (POST)`: Start a new game session by selecting a game ID. Returns questions for the game session.
+- `/api/games/start (POST)`: Start a new game session by selecting a game ID.
 - `/api/games/end (POST)`: End a game session, calculate points based on correct answers, and update user's points.
 
-## Question Handling:
+### Question Handling
 - `/api/questions/categories (GET)`: Get a list of available question categories like sports, science, history, etc.
-- `/api/questions/random (GET)`: Get a random question based on the selected category ID.
+- `/api/questions/random (GET)`: Get a random question from OpenAI based on the selected category ID.
 - `/api/questions/submit-answer (POST)`: Submit the user's answer for evaluation, provide feedback, and update points.
-- `/api/questions/explain-answer (POST)`: Get an explanation for the correct answer after the user submits their answer.
+- `/api/questions/explain-answer (POST)`: Get an explanation for the correct answer from OpenAI after the user submits their answer.
 
-## User Points and Rewards:
+### User Points and Rewards
 - `/api/points/earn (POST)`: Earn points based on correct answers, daily logins, and completing tasks.
 - `/api/points/convert (POST)`: Convert points into cash or virtual currency.
 - `/api/points/history (GET)`: Get the user's points history including earned, spent, and converted points.
 
-## Premium Features:
+### Premium Features
 - `/api/premium/upgrade (POST)`: Upgrade to premium membership with payment details.
 - `/api/premium/games/unlock (POST)`: Unlock additional games for premium users.
 - `/api/premium/multiplayer/invite (POST)`: Invite a friend for multiplayer mode by providing their email or username.
 
-## Leaderboard:
+### Leaderboard
 - `/api/leaderboard (GET)`: Get the leaderboard rankings of users based on points or game wins.
 
-## Profile Management:
+### Profile Management
 - `/api/profile/update (PUT)`: Update user profile information like username, email, password, and profile picture.
 - `/api/profile/delete (DELETE)`: Delete the user's account and all associated data.
-Notification Management:
+
+### Notification Management
 - `/api/notifications (GET)`: Get notifications for the user including game reminders, rewards, and announcements.
 - `/api/notifications/mark-as-read (POST)`: Mark notifications as read or unread.
+
+### OpenAI Integration
+- `/api/openai/generate-question (POST)`: Generate a new question using the OpenAI API based on the provided category and difficulty level.
+- `/api/openai/explain-answer (POST)`: Get an explanation for the correct answer from OpenAI based on the question and user's answer.
+
 Refer to the API documentation or codebase for detailed information on each endpoint's functionality and usage.
 
 ## Contributing
@@ -90,6 +96,6 @@ Contributions are welcome! If you have suggestions, feature requests, or bug rep
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE).
+This project is licensed under the [MIT License].
 
 ---
